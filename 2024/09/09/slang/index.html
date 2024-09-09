@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://kamikit.github.io/slang/3-1-2.png">
 <meta property="og:image" content="http://kamikit.github.io/slang/4-3-1.png">
 <meta property="article:published_time" content="2024-09-09T15:30:06.000Z">
-<meta property="article:modified_time" content="2024-09-09T15:40:25.128Z">
+<meta property="article:modified_time" content="2024-09-09T15:42:24.708Z">
 <meta property="article:author" content="Kamikit">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://kamikit.github.io/slang/2-4-1.png">
@@ -112,7 +112,7 @@
 </ul>
 </li>
 <li>易扩展也是一个着色系统必须具备的，一个易扩展的着色系统必须能够支持应用添加 feature，例如新类型的材质和光照，且最好不需要改变 host code 或 shader library</li>
-<li>下面是一个着色系统的例子：<br><img src="/slang/2-4-1.png"><br><img src="/slang/2-4-2.png"></li>
+<li>下面是一个着色系统的例子：<br><img src="/./slang/2-4-1.png"><br><img src="/./slang/2-4-2.png"></li>
 </ul>
 <h5 id="2-4-1-编写模块化的-Shader-Library"><a href="#2-4-1-编写模块化的-Shader-Library" class="headerlink" title="2.4.1 编写模块化的 Shader Library"></a>2.4.1 编写模块化的 Shader Library</h5><ul>
 <li>在上面的例子中，可以看到每个 feature 的实现同时需要 HLSL 代码和 C++ 代码，其中 HLSL 代码实现的结构体负责封装相关参数，其对应的 C++ 代码负责维护这些参数，并将他们传递给 GPU。</li>
@@ -178,7 +178,7 @@
 <li>component type 用于特化该 shader 代码</li>
 <li>参数通过独特的 parameter block 进行传递</li>
 </ul>
-<p><img src="/slang/3-1-1.png"></p>
+<p><img src="/./slang/3-1-1.png"></p>
 <h5 id="3-1-1-着色器代码与参数封装"><a href="#3-1-1-着色器代码与参数封装" class="headerlink" title="3.1.1 着色器代码与参数封装"></a>3.1.1 着色器代码与参数封装</h5><ul>
 <li>component type: 封装该 shading feature 的参数及 shader 代码(例如相机、某种材质或光照)</li>
 <li>component interface: 声明 component 的基础方法(例如光照、材质)</li>
@@ -186,7 +186,7 @@
 <h5 id="3-1-2-通过-component-type-创建特化的着色器代码"><a href="#3-1-2-通过-component-type-创建特化的着色器代码" class="headerlink" title="3.1.2 通过 component type 创建特化的着色器代码"></a>3.1.2 通过 component type 创建特化的着色器代码</h5><ul>
 <li>entry point: 用于控制总体的运算及渲染时着色器代码的数据流<ul>
 <li>entry point并不是完整的，其中包含了许多槽位，可以用 component type (例如 Camera) 或 component interface (例如 ILighting、IMaterial) 来进行表示</li>
-<li>可以看作一个模板函数：<br>  <img src="/slang/3-1-2.png"></li>
+<li>可以看作一个模板函数：<br>  <img src="/./slang/3-1-2.png"></li>
 </ul>
 </li>
 </ul>
@@ -291,7 +291,7 @@
 <li>尽管使用显式泛型拥有很多好处，但对于大型的 HLSL shader library 来说，一次性将着色器所有的全局参数都重构成每个 entry point 的显式函数参数并不现实，因此提供了全局泛型参数作为过渡，从而可以进行逐步重构。</li>
 </ul>
 <h4 id="4-3-编译器运行时API："><a href="#4-3-编译器运行时API：" class="headerlink" title="4.3 编译器运行时API："></a>4.3 编译器运行时API：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*** Front End ***/</span></span><br><span class="line"><span class="comment">// load shader code from file and compile it into IR:</span></span><br><span class="line"><span class="function">Module* <span class="title">loadModule</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* pathToSource, <span class="type">char</span>** errorMessage)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*** Reflection ***/</span></span><br><span class="line"><span class="comment">// lookup type and entry point symbols in a module</span></span><br><span class="line"><span class="function">EntryPoint* <span class="title">findEntryPoint</span><span class="params">(Module* <span class="keyword">module</span>, <span class="type">const</span> <span class="type">char</span>* name)</span></span>;</span><br><span class="line"><span class="function">Type* <span class="title">findType</span><span class="params">(Module* <span class="keyword">module</span>, <span class="type">const</span> <span class="type">char</span>* name)</span></span>;</span><br><span class="line"><span class="comment">// query parameter layout from a type symbol</span></span><br><span class="line"><span class="function">TypeLayout* <span class="title">getTypeLayout</span><span class="params">(Type* type)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// access detailed layout information from a TypeLayout object:</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ResourceUsage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> texture, sampler, buffer, ...;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">ResourceUsage <span class="title">getResourceUsage</span><span class="params">(TypeLayout* layout)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getConstantBufferSize</span><span class="params">(TypeLayout* layout)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// alternate reflection APIs: query layout directly from field names</span></span><br><span class="line"><span class="function">Type* <span class="title">getFieldType</span><span class="params">(TypeLayout* layout, <span class="type">const</span> <span class="type">char</span>* fieldName)</span></span>;</span><br><span class="line"><span class="function">ResourceUsage <span class="title">getFieldResourceOffset</span><span class="params">(TypeLayout* layout, <span class="type">const</span> <span class="type">char</span>* fieldName)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getFieldConstantBufferOffset</span><span class="params">(TypeLayout* layout, <span class="type">const</span> <span class="type">char</span>* fieldName)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// specify default layout rule for parameter blocks</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">LayoutRule</span> &#123; Native, Standard &#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">setDefaultLayoutRule</span><span class="params">(LayoutRule rule)</span></span>;</span><br><span class="line"><span class="function">Type* <span class="title">specializeType</span><span class="params">(Type* type, Type* types[])</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// query dynamic unique ID for each symbol</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getTypeUID</span><span class="params">(Type* type)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getEntryPointUID</span><span class="params">(EntryPoint* entryPoint)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*** Back End ***/</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Platform</span> &#123; HLSL, SPIRV &#125;</span><br><span class="line"><span class="comment">// generate specialized kernel code for a target platform</span></span><br><span class="line"><span class="function">Kernel* <span class="title">specializeEntryPoint</span><span class="params">(EntryPoint* entryPoint, Type* types[], Platform pfm)</span></span>;</span><br></pre></td></tr></table></figure>
-<p><img src="/slang/4-3-1.png"></p>
+<p><img src="/./slang/4-3-1.png"></p>
 <ul>
 <li>开发者将 component types 和 entry points 定义在模块中，模块会在编译器前端进行类型检查并生成IR。</li>
 <li>编译器运行时会提供反射 API，用于创建参数块时查询参数布局</li>
