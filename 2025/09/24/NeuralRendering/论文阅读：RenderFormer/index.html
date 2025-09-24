@@ -106,7 +106,7 @@ if (postBg) lightGallery(postBg, {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>论文阅读：RenderFormer</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-09-24T09:27:09.000Z" id="date"> 2025-09-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-09-24T09:28:04.910Z" id="updated"> 2025-09-24</time></div></span></div></div><hr><div id="post-content"><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>论文阅读：RenderFormer</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-09-24T09:27:09.000Z" id="date"> 2025-09-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-09-24T10:30:33.666Z" id="updated"> 2025-09-24</time></div></span></div></div><hr><div id="post-content"><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
 <li>过去的神经渲染方法通常根据特定的场景对模型进行过拟合，本文提出了一整个神经渲染的pipeline，无需针对每个场景进行训练，只需要基于三角形mesh的场景描述作为输入，支持渲染全局光照。</li>
 <li>本文提出的方法<strong>将渲染公式转换为seq2seq变换</strong>，序列中的<strong>每个token都表示一个带有反射属性的三角形</strong>，随后被转换为<strong>具有光传输平衡（light transport equilibrium）的收敛辐射分布（converged radiance distribution）的三角形</strong>。</li>
 <li>RenderFormer主要包括两个阶段：<ul>
@@ -135,15 +135,15 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <li>与此同时，对整个场景进行平移也不会改变light transport。因此，RenderFormer需要的是基于每个三角形相对于其他三角形的3D空间位置的相对位置编码。RenderFormer采用RoPE来嵌入相对空间位置。</li>
 <li>然而，RenderFormer没有使用序列索引计算位置编码，而是使用三角形的3D顶点空间信息（浮点数），因此还需要进行一系列处理才能进行RoPE编码：<ul>
 <li>首先将三个顶点的三维坐标顺序拼接成一个 9D 向量</li>
-<li>随后将每个分量复制 6 份，这 6 份分量分别乘上相应的频率信息（$[1.0, 1.3797, 1.9037, 2.6265, 3.6239, 5.0]$），得到一个包含<strong>不同频率空间特征</strong>的 54 维向量。</li>
+<li>随后将每个分量复制 6 份，这 6 份分量分别乘上相应的频率信息（<script type="math/tex">[1.0, 1.3797, 1.9037, 2.6265, 3.6239, 5.0]</script>），得到一个包含<strong>不同频率空间特征</strong>的 54 维向量。</li>
 <li>为了使用 RoPE 进行位置编码，还需要对这 54 维向量的每一个分量求 sin 与 cos，即 54 个旋转矩阵，从而能够对 embedding 的前 108 维进行 RoPE 编码。</li>
 </ul>
 </li>
 <li>RenderFormer 的 Transformer 每个注意力头处理 128 维的 embedding，因此只对前 108 维进行 RoPE 编码，剩下 20 维分量保持不变。（论文使用的 Transformer 共有 6 个注意力头，可以处理 768 维的三角形 token embedding）</li>
 <li>上文提到的相对位置编码与 RoPE 类似，都能够在保留原有内容的前提下，通过二维旋转引入相对位置信息。</li>
 <li><strong>三维 RoPE 无法保证旋转不变性</strong>：<ul>
-<li>在 2D 空间中，用 RoPE 进行位置编码，注意力分数的位置信息只依赖于旋转角度差$\theta_j - \theta_i$，不管绝对位置是多少，注意力分数只和相对位置有关。这种旋转不变性保证了相对位置在不同全局坐标系下能够保持一致。</li>
-<li>而在 3D 空间中，一个旋转不是单靠一个旋转角度就能确定的，即便是相同的角度，更换旋转轴或旋转顺序，最终得到的旋转结果完全不同（$SO(3)$不可交换），此时无法通过角度差来得到相对位置，因此无法对相对位置做统一表达。</li>
+<li>在 2D 空间中，用 RoPE 进行位置编码，注意力分数的位置信息只依赖于旋转角度差 <script type="math/tex">\theta_j - \theta_i</script>，不管绝对位置是多少，注意力分数只和相对位置有关。这种旋转不变性保证了相对位置在不同全局坐标系下能够保持一致。</li>
+<li>而在 3D 空间中，一个旋转不是单靠一个旋转角度就能确定的，即便是相同的角度，更换旋转轴或旋转顺序，最终得到的旋转结果完全不同（<script type="math/tex">SO(3)</script> 不可交换），此时无法通过角度差来得到相对位置，因此无法对相对位置做统一表达。</li>
 </ul>
 </li>
 </ul>
