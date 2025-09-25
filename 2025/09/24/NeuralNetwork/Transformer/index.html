@@ -106,11 +106,13 @@ if (postBg) lightGallery(postBg, {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Transformer</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-09-24T09:19:45.000Z" id="date"> 2025-09-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-09-25T06:34:40.032Z" id="updated"> 2025-09-25</time></div></span></div></div><hr><div id="post-content"><ul>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Transformer</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-09-24T09:19:45.000Z" id="date"> 2025-09-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-09-25T11:18:17.184Z" id="updated"> 2025-09-25</time></div></span></div></div><hr><div id="post-content"><ul>
 <li>参考文章；<ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_85375298/article/details/144106338">https://blog.csdn.net/2401_85375298/article/details/144106338</a></li>
 <li><a target="_blank" rel="noopener" href="https://zybuluo.com/hanbingtao/note/2600518">https://zybuluo.com/hanbingtao/note/2600518</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/hanbingtao/note/2600833">https://www.zybuluo.com/hanbingtao/note/2600833</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shizheng_Li/article/details/146213459">https://blog.csdn.net/shizheng_Li/article/details/146213459</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/693611439">https://zhuanlan.zhihu.com/p/693611439</a></li>
 </ul>
 </li>
 </ul>
@@ -133,7 +135,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <li>第二步，计算 token 之间的注意力权重，具体做法就是将自身的 Q 矩阵与序列中其他所有 token 的 K 矩阵相乘，即为当前 token 对序列中其他 token 的注意力。若向量的维度较大，则最终的点乘结果也会显著增大，从而导致梯度消失，因此还需要对点乘结果进行一定的缩放，通常采用的系数是 <script type="math/tex">\frac{1}{\sqrt{D_k}}</script>。</li>
 <li>第三步，对缩放后的注意力分数进行归一化，通常采用 softmax 函数进行归一化，保证最终该 token 注意力分数之和为 1，相当于转换成概率。</li>
 <li>最后，将归一化后的注意力分数与其对应的 token 相乘并求和，最终得到包含自身与上下文的向量表示。</li>
-<li>整个过程可以这样理解：Q 矩阵是我们需要查询的东西，K 矩阵是 token 自身的关键词和关键信息，通过 Q 与 K 相乘，就可以得到每个 token 与我们所需要查询的东西的相关度，相关度越高我们就越需要关注它。V 矩阵是每个 token 实际的含义，我们根据先前计算得到的关注度进行加权求和，最终得到的结果就包含了自身和相关上下文的信息。</li>
+<li>整个过程可以这样理解：Q 矩阵是<strong>提问者</strong>，包含想要关注什么的向量，K 矩阵是<strong>被关注者</strong>的索引或标识，通过 Q 与 K 相乘，就可以得到各个 token 之间的关注度。V 矩阵是<strong>被关注者</strong>实际携带的信息，我们根据先前计算得到的关注度进行加权求和，最终得到的结果就包含了自身和相关上下文（Value）的信息。</li>
 </ul>
 <h4 id="Multi-Head-Attention"><a href="#Multi-Head-Attention" class="headerlink" title="Multi-Head Attention"></a>Multi-Head Attention</h4><p class='item-img' data-src='../../images/Transformer/2.png'><img src="../../images/Transformer/2.png" alt=""></p>
 <ul>
@@ -142,4 +144,102 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <li><p>具体做法就是每个 token 线性投影得到 h 个 Q、K、V 矩阵，每一组都进行 Self Attention，得到的注意力分数矩阵 Z 拼接在一起，最终与一个可学习的权重矩阵相乘，统合各个语义子空间的信息，使最终的结果维度与输入的词向量相同。</p>
 </li>
 </ul>
-<h4 id="Cross-Attention"><a href="#Cross-Attention" class="headerlink" title="Cross Attention"></a>Cross Attention</h4><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/09/24/Embedding/RoPE/">← Next RoPE</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/09/24/NeuralNetwork/RNN%E3%80%81LSTM%E5%92%8CGRU/">RNN、LSTM和GRU Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Kamikit</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attention"><span class="toc-number">1.</span> <span class="toc-text">Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Self-Attention"><span class="toc-number">1.1.</span> <span class="toc-text">Self Attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multi-Head-Attention"><span class="toc-number">1.2.</span> <span class="toc-text">Multi-Head Attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cross-Attention"><span class="toc-number">1.3.</span> <span class="toc-text">Cross Attention</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<h4 id="Masked-Multi-Head-Attention"><a href="#Masked-Multi-Head-Attention" class="headerlink" title="Masked Multi-Head Attention"></a>Masked Multi-Head Attention</h4><ul>
+<li>对于文本理解，注意力机制的设计为双向的（即前文提到的各种注意力机制），一个 token 既可以注意到前面的 token，也可以注意到后续的 token。</li>
+<li>对于文本生成，注意力机制的设计是单向的（当前 token 无法注意到后续尚未生成的 token）。单向注意力机制可以通过<strong>掩码</strong>实现，定义掩码矩阵 <script type="math/tex">M \in R^{S \times S}</script>：<script type="math/tex; mode=display">
+M_{ij} = \begin{cases}
+0, & i \geq j \\
+-\infty, & i < j
+\end{cases}</script></li>
+<li>其中，<script type="math/tex">i</script> 表示 query 向量在序列中的位置，<script type="math/tex">j</script> 表示 key 向量在序列中的位置，该掩码矩阵本质上是一个上三角矩阵。</li>
+<li>在计算注意力权重时，掩码是通过加法引入注意力分数中：<script type="math/tex; mode=display">
+Masked(A) = A + M</script></li>
+<li>因此该注意力公式为：<script type="math/tex; mode=display">
+CausalAttention(Q, K, V) = softmax\left( \frac{QK^T}{\sqrt{d_k}} + M \right) V</script></li>
+<li>当掩码为 <script type="math/tex">0</script> 时，注意力分数和 Self Attention 计算方法一致；当掩码为 <script type="math/tex">-\infty</script>时，经过 softmax 计算，最终注意力分数趋向于 0，忽略不计。</li>
+<li>简单来说，掩码通过将当前 token 对后续 token 的注意力分数强制清 0，最终计算结果不包含任何后文 token 的 Value 信息，从而达到单向注意力的效果。</li>
+</ul>
+<h4 id="Cross-Attention"><a href="#Cross-Attention" class="headerlink" title="Cross Attention"></a>Cross Attention</h4><p class='item-img' data-src='../../images/Transformer/6.png'><img src="../../images/Transformer/6.png" alt=""></p>
+<ul>
+<li>与 Self Attention 不同，Self Attention 是让一个序列内部的元素相互关注，而 Cross Attention 则是让<strong>两个不同的序列</strong>之间建立关注关系，其核心在于允许一个序列（query）去关注另一个序列（key、value），从而实现信息的融合。</li>
+<li>具体来说，Query 的来源通常是一个需要补充信息的目标序列，Key/Value 的来源通常是一个提供信息的参考序列。整个过程就可以理解为：一个需要生成或理解的目标序列（Query）去关注一个提供上下文或背景的参考序列（Key/Value），最终根据计算的关注度和参考序列信息来补充生成目标序列的后续内容。</li>
+<li>举几个例子：<ul>
+<li>机器翻译（seq2seq）<ul>
+<li>Query：Decoder 当前生成的单词</li>
+<li>Key/Value：Encoder 输出的源语言句子</li>
+<li>交叉关系：Decoder 在生成目标语言时，关注源语言的每个单词，决定当前要翻译什么</li>
+</ul>
+</li>
+<li>图像描述生成<ul>
+<li>Query：语言模型生成的当前单词</li>
+<li>Key/Value：图像特征（由 CNN 或 Transformer 提取）</li>
+<li>交叉关系：语言模型在生成描述时，关注源图像的不同特征</li>
+</ul>
+</li>
+<li>多模态任务<ul>
+<li>Query：文本输入（例如问题）</li>
+<li>Key/Value：图像或视频特征</li>
+<li>交叉关系：文本去关注与问题相关的视觉信息，从而完成回答</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Transformer-结构"><a href="#Transformer-结构" class="headerlink" title="Transformer 结构"></a>Transformer 结构</h3><ul>
+<li>Transformer 整体上采用的是 Encoder-Decoder 结构，如图所示：<br class='item-img' data-src='../../images/Transformer/3.png'><img src="../../images/Transformer/3.png" alt=""><br class='item-img' data-src='../../images/Transformer/4.png'><img src="../../images/Transformer/4.png" alt=""></li>
+</ul>
+<h4 id="Encoder、Decoder"><a href="#Encoder、Decoder" class="headerlink" title="Encoder、Decoder"></a>Encoder、Decoder</h4><ul>
+<li>对于 Encoder-Decoder 模型来说，Encoder 通常是用来<strong>理解输入</strong>，而 Decoder 用于<strong>生成输出</strong>，主要包括以下三类模型：<ul>
+<li><strong>Encoder only</strong>：主要用于判别类任务，如分类、回归。</li>
+<li><strong>Decoder only</strong>：可以用于生成序列，需要大量训练语料，没办法直接高效处理输入-输出匹配任务。以 GPT 为例，GPT 与用户的交互并不是输入-输出匹配任务，而是采取 Decoder 堆叠，在训练时，模型通过大量训练数据学会了根据上下文预测合理的后续内容，在推理时，用户输入一个 prompt，模型会把这个 prompt 当做上下文，然后继续往后生成回答。</li>
+<li><strong>Encoder-Decoder</strong>：最早主要用于 <strong>seq2seq</strong> 任务，Encoder 用于理解输入，将输入的序列转到中间语义空间，Decoder 再从中间语义空间解码，生成输出结果。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Transformer-Encoder-结构"><a href="#Transformer-Encoder-结构" class="headerlink" title="Transformer Encoder 结构"></a>Transformer Encoder 结构</h4><ul>
+<li>首先，需要将输入序列中的 tokens 转换为词向量，并引入位置编码，得到的 embeddings 将作为 Encoder 的起始输入。</li>
+<li>Encoder 的内部结构主要由 Multi-Head Attention、Add &amp; Norm、Feed Forward 等构成：<ul>
+<li>Multi-Head Attention：主要用于获取序列中 token 之间的上下文信息。</li>
+<li>Feed Forward：主要用于每个 token 内部各个维度的特征信息的混合，相当于按照一定的权重组合各个原始特征，得到表达能力更强的高阶特征，进一步增强模型的表达能力，具体公式为：<script type="math/tex; mode=display">
+FFN(x) = max(0, xW_1 + b_1)W_2 + b_2</script></li>
+<li>Add &amp; Norm：<ul>
+<li>Add 操作本质是残差网络，保证梯度反向传播时可以跳过 Multi-Head Attention 和 FFN 等子层，避免梯度爆炸和梯度消失，同时也可以通过 引入恒等变换进一步增强模型的表达能力。</li>
+<li>Norm 是<strong>归一化</strong>，如果不进行归一化，某一层的输出经过激活函数后，其分布可能会出现较大的偏移，例如输出值变得特别大，那么在梯度反向传播时就有可能出现梯度爆炸。与此同时，若不同层的输出分布差异很大，例如有的层输出分布很集中，而有的层输出分布很分散，在训练过程中很难找到一个合适的学习率去适应不同的尺度。因此归一化对模型的训练收敛是不可或缺的，能够<strong>保证训练稳定性的同时，加速模型收敛</strong>。</li>
+<li>Transformer 中常用的归一化公式如下，其中 <script type="math/tex">\mu</script> 是单个 token 所有维度的均值，<script type="math/tex">\sigma</script> 是单个 token 所有维度的标准差，<script type="math/tex">\gamma、\beta</script> 是模型的可学习参数，对归一化后的 token 的每个维度进行适当的仿射变换，使归一化后的数据分布更符合激活函数的非线性变化。<script type="math/tex; mode=display">
+LayerNorm(x) = \frac{x - \mu}{\sigma} * \gamma + \beta</script></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>上面所介绍的 Encoder 结构属于 Post-Norm 型，是 Transformer 提出时所采用的结构，即 <strong>x → Attention/FFN → 残差加和 → LayerNorm</strong>，这种结构梯度在反向传播时必须先经过 LayerNorm 才能继续传递，当网络很深（上百层）时，还是容易出现梯度爆炸和梯度消失。</li>
+<li>目前更常用的 Encoder 结构是 Pre-Norm 型，每一个 Encoder 单元在输入信息后先进行归一化，即 <strong>x → LayerNorm → Attention/FFN → 残差求和</strong>，这样梯度在反向传播时可以跳过 LayerNorm 层。这种结构不需要保证单元输出为归一化后的稳定分布，而是在输入时先进行归一化，同样可以得到 Post-Norm 结构的效果，并且训练更加稳定，支持更深层的网络结构。</li>
+</ul>
+<h4 id="Transformer-Decoder-结构"><a href="#Transformer-Decoder-结构" class="headerlink" title="Transformer Decoder 结构"></a>Transformer Decoder 结构</h4><p class='item-img' data-src='../../images/Transformer/5.png'><img src="../../images/Transformer/5.png" alt=""></p>
+<ul>
+<li>Decoder 的输入输出序列中包含两个特殊的 token：[start] 是解码器输入的第一个 token，用于标识 decoding 开始，随后解码器开始生成新序列的第一个 token；[end] 是解码器输出的最后一个 token，用于标识生成结束。</li>
+<li>Decoder 的结构与 Encoder 基本相似，有两点不同：<ul>
+<li>第一点不同，Decoder 只能根据已经生成的 token 序列去生成后续的 token，因此需要使用 Masked Multi-Head Attention 替代原先的 Multi-Head Attention。</li>
+<li>第二点不同，Decoder 在生成过程中，不仅需要结合已经生成的上下文信息，还要结合 Encoder 提供的输入信息，因此还需要一个额外的 Multi-Head Attention 层，用于实现 Encoder 和 Decoder 的 Cross Attention。</li>
+<li>具体来说，将 Decoder 中 Masked Multi-Head Attention 层的输出投影得到 query 向量，根据 Encoder 对应层的输出投影得到 key 和 value 向量，再根据注意力公式进行计算，从而使得 Decode 输出的 token 可以融合 Encoder 输出 token 的信息。</li>
+</ul>
+</li>
+<li>简单来说，第一层 Masked Multi-Head Attention 用于目标序列关注自身（已生成的 token 之间相互关注），第二层 Cross Attention 用目标序列的 Query 去关注 Encoder 输出的参考信息（Key/Value）。</li>
+<li>当 Decoder 的最后一个单元输出后，这个输出的矩阵每一行都代表了该 token 经过注意力机制计算后所包含的信息（已生成目标序列的上下文信息、参考序列信息），随后这个矩阵会经过一次线性变换，将维度从词向量维度 <script type="math/tex">D_x</script> 变为词表的大小，再经过<strong>带温度</strong>的 softmax 归一化后，使之转变为概率，归一化后的向量的每个分量都对应词表中的词的预测概率，对这个概率进行采样，就可以输出对应的词。</li>
+<li>带温度的 softmax 公式如下：<script type="math/tex; mode=display">
+Softmax(x_i) = \frac{e^{x_i/T}}{\sum_{j=1}^n e^{x_j/T}}</script></li>
+<li>其中 <script type="math/tex">x_i</script> 为线性变换后的 Decoder 输出向量分量，<script type="math/tex">T</script> 是温度参数。</li>
+<li>当温度 <script type="math/tex">T</script> 趋近于 0 时，概率分布会变得非常尖锐，模型的输出确定性加强，当 <script type="math/tex">T = 0</script> 时，模型只会输出最高值对应的词；当 <script type="math/tex">T</script> 的取值增大后，概率分布会变得平滑，模型输出的随机性加强，会表现出更多的创造力。</li>
+</ul>
+<h3 id="Transformer-训练过程："><a href="#Transformer-训练过程：" class="headerlink" title="Transformer 训练过程："></a>Transformer 训练过程：</h3><p class='item-img' data-src='../../images/Transformer/7.jpg'><img src="../../images/Transformer/7.jpg" alt=""></p>
+<ul>
+<li>Encoder 阶段的过程与先前介绍的 Encoder 结构一致，此处不再介绍。</li>
+<li>需要注意的是，Decoder 阶段的输入是一整个目标序列，因为在 Decoding 的过程中，Masked Multi-Head Attention 模拟了生成过程中的单向注意力，因此不需要像推理生成那样循环执行，从而加快训练速度。</li>
+<li>为了避免混淆，这里引入了掩码之后，最后 Decoder 输出的矩阵每一行并不是代表每个时刻的序列信息，其仍然是每个 token 经过注意力机制计算后得到的融合信息，只是该 token 所对应的行向量不包含其后续 token 的 Value 信息，因此掩码可以有效地模拟整个循环生成的过程。</li>
+<li>得到概率之后，可以通过采样或取概率最高的词作为生成结果，训练时直接得到整个生成的序列，再根据损失函数继续对模型进行参数优化即可。</li>
+</ul>
+<h3 id="Transformer-推理过程："><a href="#Transformer-推理过程：" class="headerlink" title="Transformer 推理过程："></a>Transformer 推理过程：</h3><p class='item-img' data-src='../../images/Transformer/8.jpg'><img src="../../images/Transformer/8.jpg" alt=""></p>
+<ul>
+<li>与训练过程不同的是，模型不知道目标序列是什么，因此只能逐个单词进行生成。</li>
+<li>编码阶段与训练过程完全一致，解码阶段初始并不知道任何目标序列的信息，因此只能从起始标志 [start] 开始输入 Decoder，经过一轮解码后，根据概率采样或选取最大值对应的词，将其拼接到正在生成的目标序列当中，然后将拼接好的目标序列再次输入到 Decoder 中生成下一个单词，直至整个序列生成完毕。</li>
+</ul>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/09/24/Embedding/PositionalEncoding/">← Next PositionalEncoding</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/09/24/NeuralNetwork/RNN%E3%80%81LSTM%E5%92%8CGRU/">RNN、LSTM和GRU Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Kamikit</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Attention"><span class="toc-number">1.</span> <span class="toc-text">Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Self-Attention"><span class="toc-number">1.1.</span> <span class="toc-text">Self Attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multi-Head-Attention"><span class="toc-number">1.2.</span> <span class="toc-text">Multi-Head Attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Masked-Multi-Head-Attention"><span class="toc-number">1.3.</span> <span class="toc-text">Masked Multi-Head Attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cross-Attention"><span class="toc-number">1.4.</span> <span class="toc-text">Cross Attention</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Transformer-%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">Transformer 结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Encoder%E3%80%81Decoder"><span class="toc-number">2.1.</span> <span class="toc-text">Encoder、Decoder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer-Encoder-%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">Transformer Encoder 结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer-Decoder-%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">Transformer Decoder 结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Transformer-%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">Transformer 训练过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Transformer-%E6%8E%A8%E7%90%86%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">Transformer 推理过程：</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
