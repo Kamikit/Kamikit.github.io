@@ -106,7 +106,7 @@ if (postBg) lightGallery(postBg, {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Transformer</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-09-24T09:19:45.000Z" id="date"> 2025-09-24</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-09-28T00:49:44.542Z" id="updated"> 2025-09-28</time></div></span></div></div><hr><div id="post-content"><ul>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Transformer</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-09-24T09:19:45.000Z" id="date"> 2025-09-24</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-09-28T11:03:17.601Z" id="updated"> 2025-09-28</time></div></span></div></div><hr><div id="post-content"><ul>
 <li>参考文章；<ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/2401_85375298/article/details/144106338">https://blog.csdn.net/2401_85375298/article/details/144106338</a></li>
 <li><a target="_blank" rel="noopener" href="https://zybuluo.com/hanbingtao/note/2600518">https://zybuluo.com/hanbingtao/note/2600518</a></li>
@@ -163,7 +163,8 @@ CausalAttention(Q, K, V) = softmax\left( \frac{QK^T}{\sqrt{d_k}} + M \right) V</
 <ul>
 <li>与 Self Attention 不同，Self Attention 是让一个序列内部的元素相互关注，而 Cross Attention 则是让<strong>两个不同的序列</strong>之间建立关注关系，其核心在于允许一个序列（query）去关注另一个序列（key、value），从而实现信息的融合。</li>
 <li>具体来说，Query 的来源通常是一个需要补充信息的目标序列，Key/Value 的来源通常是一个提供信息的参考序列。整个过程就可以理解为：一个需要生成或理解的目标序列（Query）去关注一个提供上下文或背景的参考序列（Key/Value），最终根据计算的关注度和参考序列信息来补充生成目标序列的后续内容。</li>
-<li>举几个例子：<ul>
+<li><p>举几个例子：</p>
+<ul>
 <li>机器翻译（seq2seq）<ul>
 <li>Query：Decoder 当前生成的单词</li>
 <li>Key/Value：Encoder 输出的源语言句子</li>
@@ -184,6 +185,9 @@ CausalAttention(Q, K, V) = softmax\left( \frac{QK^T}{\sqrt{d_k}} + M \right) V</
 </li>
 </ul>
 </li>
+<li><p>Cross Attention 本质是将两种模态的信息投影到同一个局部语义交互空间，在该空间中可以让不同模态的信息进行语义指导与语义交互；而 CLIP 的文本与图像投影到的是同一个全局语义对齐空间，比前者更加严格，能够做到图文的一一匹配。</p>
+</li>
+<li>待生成的一方通常提供 Query 向量，而控制信息/参考信息通常提供 Key 和 Value 向量。投影到同一个语义空间后，通过注意力机制即可实现语义交互，待生成的一方通过 Query 向量与参考信息的 Key 进行点积，使得相关度更高的参考信息权重更高，加权求和后，最终结果就包含了参考信息，从而实现跨模态的引导生成。</li>
 </ul>
 <h3 id="Transformer-结构"><a href="#Transformer-结构" class="headerlink" title="Transformer 结构"></a>Transformer 结构</h3><ul>
 <li>Transformer 整体上采用的是 Encoder-Decoder 结构，如图所示：<br class='item-img' data-src='../../images/Transformer/3.png'><img src="../../images/Transformer/3.png" alt=""><br class='item-img' data-src='../../images/Transformer/4.png'><img src="../../images/Transformer/4.png" alt=""></li>

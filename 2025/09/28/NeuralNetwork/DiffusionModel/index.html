@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Stable Diffusion | Kamikit's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Stable Diffusion</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-09-28T03:30:12.000Z" id="date"> 2025-09-28</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-09-28T11:10:48.898Z" id="updated"> 2025-09-28</time></div></span></div></div><hr><div id="post-content"><ul>
+<li>参考文章：<ul>
+<li><a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-stable-diffusion/">https://jalammar.github.io/illustrated-stable-diffusion/</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/624221952">https://zhuanlan.zhihu.com/p/624221952</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="逐层剖析-Stable-Diffusion"><a href="#逐层剖析-Stable-Diffusion" class="headerlink" title="逐层剖析 Stable Diffusion"></a>逐层剖析 Stable Diffusion</h3><p class='item-img' data-src='../../images/DiffusionModel/1.png'><img src="../../images/DiffusionModel/1.png" alt=""></p>
+<ul>
+<li>从宏观角度看，Stable Diffusion 主要包含两部分：一个文本解释器，一个图像生成器，用户向文本解释器中输入一串文本，经过文本解释器将其投影到特定的语义空间，随后传递给图像生成器中引导图像生成，最终输出一张生成图像。<br class='item-img' data-src='../../images/DiffusionModel/2.png'><img src="../../images/DiffusionModel/2.png" alt=""></li>
+<li>前面提到的文本解释器本质就是一个 Transformer Encoder，将文本中的词 token 投影到语义空间，得到对应的 embedding。<br class='item-img' data-src='../../images/DiffusionModel/3.png'><img src="../../images/DiffusionModel/3.png" alt=""></li>
+<li>更进一步，图像生成器主要包含两个阶段：<ul>
+<li>Image Information Creator：这部分是 Stable Diffusion 性能超越其他模型的关键。这部分通常会执行若干步来生成图像信息，执行的步数作为可调参数，通常设置为 50 或 100。</li>
+<li>Image Decoder：这部分会根据 Image Information Creator 传递来的图像信息绘制图像，只在最后阶段执行一次。<br class='item-img' data-src='../../images/DiffusionModel/4.png'><img src="../../images/DiffusionModel/4.png" alt=""></li>
+</ul>
+</li>
+<li>上述三个模块就是 Stable Diffusion 的主要构成，具体如下：<ul>
+<li>Text Encoder：<strong>CLIP Text Encoder</strong><ul>
+<li>input：一串文本</li>
+<li>output：若个干 token embedding 向量，每个向量 768 维</li>
+</ul>
+</li>
+<li>Image Information Creator：<strong>U-Net + Scheduler</strong><ul>
+<li>input：文本 embedding 向量、一张初始噪声图像</li>
+<li>output：处理后的噪声图像信息</li>
+</ul>
+</li>
+<li>Image Decoder：<strong>Autoencoder Decoder</strong><ul>
+<li>input：处理后的噪声图像信息</li>
+<li>output：生成图像</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="How-Diffusion-works"><a href="#How-Diffusion-works" class="headerlink" title="How Diffusion works"></a>How Diffusion works</h3><ul>
+<li>扩散模型生成图像的本质就是预测噪声，通过对原始噪声图像进行逐步去噪得到生成图像。</li>
+</ul>
+<h4 id="噪声预测"><a href="#噪声预测" class="headerlink" title="噪声预测"></a>噪声预测</h4><p class='item-img' data-src='../../images/DiffusionModel/5.png'><img src="../../images/DiffusionModel/5.png" alt=""><br class='item-img' data-src='../../images/DiffusionModel/6.png'><img src="../../images/DiffusionModel/6.png" alt=""></p>
+<ul>
+<li>对于训练集，我们可以通过对不同图片加噪声得到，我们假设 T = 0 时（图中 ammount = 0），图像为原始图像，T = t 时，图像经过了 t 轮加噪，每次加噪都是对原始噪声进行随机采样（实际训练时，为了保证高效，我们只对原始噪声采样一次，加噪时噪声项会乘一个系数，该系数与时刻 T 有关，具体推导过程见参考文章 2）。<br class='item-img' data-src='../../images/DiffusionModel/7.png'><img src="../../images/DiffusionModel/7.png" alt=""></li>
+<li>有了这个训练集，我们就可以训练一个网络（U-Net）来预测噪声，输入加噪后的图像和时刻 t，输出预测噪声，计算预测噪声与<strong>原始噪声</strong>的 loss，并反向传播更新网络，最终得到一个功能强大的噪声预测器。</li>
+</ul>
+<h4 id="去噪绘制"><a href="#去噪绘制" class="headerlink" title="去噪绘制"></a>去噪绘制</h4><p class='item-img' data-src='../../images/DiffusionModel/8.png'><img src="../../images/DiffusionModel/8.png" alt=""></p>
+<ul>
+<li>有了上面训练好的噪声预测器，我们就可以从一个噪声图像经过 T 步去噪，逐步接近最终生成的图像。但是这样生成的图像无法通过文本控制，其完全取决于训练集的图像，由训练集图像的各种特征组合而成。</li>
+</ul>
+<h4 id="Diffusion-on-Latent-Space"><a href="#Diffusion-on-Latent-Space" class="headerlink" title="Diffusion on Latent Space"></a>Diffusion on Latent Space</h4><ul>
+<li>为了加速图像的生成过程，Stable Diffusion 并没有选择直接在像素空间进行生成，而是先投影到 Latent Space 再进行扩散，相当于生成图像的压缩版本。</li>
+<li>这种压缩通过一个 autoencoder 实现，待去噪图像输入后会先被 autoencoder 投影到 latent space，在 latent sapce 去噪后，再通过 autoencoder 的 decoder 投影回像素空间，得到生成图像。这个 decoder 就是前文所提到的 Image Decoder。</li>
+</ul>
+<h4 id="文本控制"><a href="#文本控制" class="headerlink" title="文本控制"></a>文本控制</h4><p class='item-img' data-src='../../images/DiffusionModel/9.png'><img src="../../images/DiffusionModel/9.png" alt=""></p>
+<ul>
+<li>为了能够让文本控制图像生成过程，我们还需要向 Denoising U-Net 中输入文本信息，输入前需要通过 CLIP Text Encoder 转换为 embedding 向量。</li>
+</ul>
+<p class='item-img' data-src='../../images/DiffusionModel/10.png'><img src="../../images/DiffusionModel/10.png" alt=""></p>
+<ul>
+<li>未引入文本控制的 Denoising U-Net 大致结构如图所示，其由若干层 ResNet 组成，每个 ResNet 的输出都是对应时刻去噪后的结果。</li>
+</ul>
+<p class='item-img' data-src='../../images/DiffusionModel/11.png'><img src="../../images/DiffusionModel/11.png" alt=""></p>
+<ul>
+<li>为了引入跨模态的文本控制，很自然地想到可以在每个 ResNet 层后加入一个 Cross-Attention 层，由图像隐空间表示来提供 Query 向量（图像特征），文本信息提供 Key 和 Value。需要注意的是，原先的残差连接是从每个 ResNet 的输出直接连接到最后，加入了 Attention 层后，对应时刻的去噪结果是 Attention 层的输出，因此残差连接需要从每一个 Attention 层的输出开始。</li>
+</ul>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/09/28/Embedding/CLIP/">CLIP 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Kamikit</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%90%E5%B1%82%E5%89%96%E6%9E%90-Stable-Diffusion"><span class="toc-number">1.</span> <span class="toc-text">逐层剖析 Stable Diffusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-Diffusion-works"><span class="toc-number">2.</span> <span class="toc-text">How Diffusion works</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%99%AA%E5%A3%B0%E9%A2%84%E6%B5%8B"><span class="toc-number">2.1.</span> <span class="toc-text">噪声预测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%BB%E5%99%AA%E7%BB%98%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text">去噪绘制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Diffusion-on-Latent-Space"><span class="toc-number">2.3.</span> <span class="toc-text">Diffusion on Latent Space</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">2.4.</span> <span class="toc-text">文本控制</span></a></li></ol></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

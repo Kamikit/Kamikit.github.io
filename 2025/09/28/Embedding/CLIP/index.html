@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="cn" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CLIP | Kamikit's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>CLIP</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-09-28T03:29:55.000Z" id="date"> 2025-09-28</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-09-28T08:37:42.099Z" id="updated"> 2025-09-28</time></div></span></div></div><hr><div id="post-content"><p>（待完善）</p>
+<ul>
+<li>参考文章：<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/12322629416">https://zhuanlan.zhihu.com/p/12322629416</a></li>
+<li><a target="_blank" rel="noopener" href="https://ai-bot.cn/shot-learning/">https://ai-bot.cn/shot-learning/</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h3><ul>
+<li>CLIP 使用大量数据预训练好一个文本编码器和一个图像编码器，这两个编码器可以<strong>把文本和图像投影到同一个语义空间</strong>，在训练过程中，CLIP通过对比学习，会让相匹配的图像与文本的<strong>余弦相似度</strong>更高，不匹配的更低。</li>
+<li>在零样本学习中，我们只需用文本 prompt 定义类别或任务，CLIP 就能够提取图像和文本的对应特征，并通过余弦相似度进行匹配，从而完成分类、检索等任务，即使之前没有针对该任务进行过额外训练。</li>
+</ul>
+<h3 id="零样本学习："><a href="#零样本学习：" class="headerlink" title="零样本学习："></a>零样本学习：</h3><ul>
+<li>零样本学习要求模型在没有见过任何目标类别样本的情况下（没有明确标注类别的样本），仍然能够进行识别和分类。</li>
+<li>举个例子：训练集中没有任何包含企鹅的图片，但模型通过超大量的训练数据学习到企鹅是一种鸟类、企鹅生活在寒冷的地方、企鹅是黑白色的等特征，通过组合这些特征，模型就能够把企鹅这种“没见过”的新类别与已知的特征信息联系起来，从而实现对新类别的识别。</li>
+<li>在上面这个例子中，我们并没有任何包含企鹅的训练样本提供给模型进行学习，但模型仍然可以通过额外的辅助信息，组合已知的类别与特征，实现对新类别的识别，这就是零样本学习。</li>
+<li>CLIP 就能够实现上述的零样本学习，它能够将文本和图像信息投影到同一个语义空间中，即使在训练集中并没有明确训练或标注过“企鹅”这个类别，CLIP 仍然可以通过文本编码器，将与“企鹅”相关的文本投影到语义空间，生成的向量中包含了“鸟”、”黑白“、”冰雪背景“等语义信息。同时它也会通过图像编码器，提取出图像中的各种特征，生成另一个向量。最后让二者在同一个语义空间中进行匹配，匹配度高的即为新类别“企鹅”。</li>
+</ul>
+<h3 id="CLIP-Text-Encoder："><a href="#CLIP-Text-Encoder：" class="headerlink" title="CLIP Text Encoder："></a>CLIP Text Encoder：</h3><ul>
+<li>与标准的 Transformer Encoder 基本一致，输入一串文本 prompt，输出一个固定维度的 embedding，包含整句话的上下文信息，并能够与图像 embedding 对齐。</li>
+<li>与标准的 Transformer Encoder 不同的是，CLIP 默认取 [EOS] token（句子末尾标注）的 embedding 作为整句话的语义表示，且在计算损失函数进行优化时也只计算 [EOS] token，这样模型会默认训练成将整句话的语义信息压缩到 [EOS] token，避免了额外的池化操作。</li>
+</ul>
+<h3 id="训练方法："><a href="#训练方法：" class="headerlink" title="训练方法："></a>训练方法：</h3><p class='item-img' data-src='../../images/CLIP/1.png'><img src="../../images/CLIP/1.png" alt=""></p>
+<ul>
+<li>如图所示，CLIP 同时训练一个文本编码器和一个图像编码器，输入文本-图像对，对它们进行编码并计算余弦相似度，越匹配的文本-图像对，余弦相似度应该越高，反之则必须越低，根据计算的结果与真实信息，继续更新优化两个编码器。使用超大量的数据反复执行上述操作，最终得到 CLIP 的文本编码器和图像编码器。（一般直接使用 OpenAI 等大公司预训练好的 CLIP 编码器即可）</li>
+</ul>
+<h3 id="应用空间："><a href="#应用空间：" class="headerlink" title="应用空间："></a>应用空间：</h3><ul>
+<li>CLIP 能够将文本和图像信息投影到同一个语义空间中，从而让文本信息和图像信息能够互相匹配，或是使用文本信息引导图像处理：<ul>
+<li>图文检索：输入文本，找到最相似的图像，反之也可以实现，这也是 CLIP 的原生任务</li>
+<li>零样本图像分类：给定一张图片和一组类别的文本 prompt，看哪个文本更匹配</li>
+<li>图像聚类/语义检索：用 CLIP 提取图像 embedding，在语义空间中进行聚类或检索</li>
+<li>文本引导图像生成：如 Stable Diffusion 等都使用 CLIP 的 encoder 作为 prompt 的编码器</li>
+</ul>
+</li>
+</ul>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/09/28/NeuralNetwork/DiffusionModel/">← 下一篇 Stable Diffusion</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/09/28/Finetune/LoRA/">LoRA 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Kamikit</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">概述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%B6%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">零样本学习：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CLIP-Text-Encoder%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">CLIP Text Encoder：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">训练方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%A9%BA%E9%97%B4%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">应用空间：</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
