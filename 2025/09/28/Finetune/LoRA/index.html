@@ -10,7 +10,7 @@
   font-family: 'JetBrains Mono';
   src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
 }
-</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}};
 var page_config = {
   code_fold: null
 };
@@ -51,7 +51,7 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
 }</style><style>:root {
  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
  --light-background: url('/img/bk.jpg');
- --theme-encrypt-confirm: '确认'
+ --theme-encrypt-confirm: 'confirm'
 }</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
 window.mermaid = mermaid;
 code.paintMermaid();
@@ -106,4 +106,82 @@ if (postBg) lightGallery(postBg, {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>LoRA</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-09-28T03:29:51.000Z" id="date"> 2025-09-28</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-09-28T11:15:13.028Z" id="updated"> 2025-09-28</time></div></span></div></div><hr><div id="post-content"><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/09/28/Embedding/CLIP/">← 下一篇 CLIP</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/09/28/NeuralNetwork/U-NET/">U-Net 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Kamikit</a></h1><div id="description"><p></p></div></div><div id="aside-block"></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.0.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>LoRA</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-09-28T03:29:51.000Z" id="date"> 2025-09-28</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-09-29T03:38:31.565Z" id="updated"> 2025-09-29</time></div></span></div></div><hr><div id="post-content"><ul>
+<li>参考文章：<ul>
+<li><a target="_blank" rel="noopener" href="https://www.51cto.com/aigc/6010.html">https://www.51cto.com/aigc/6010.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/646791309">https://zhuanlan.zhihu.com/p/646791309</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>大模型动辄几亿到几千亿的参数，如果针对每个任务都去进行全微调，既浪费存储空间又浪费微调时间。</li>
+</ul>
+<h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><ul>
+<li>在微调过程中模型加载预训练参数 <script type="math/tex">\Phi_0</script> 进行初始化，参数更新后变为 <script type="math/tex">\Phi_0 + \Delta \Phi</script>，这种微调方式的参数增量 <script type="math/tex">\Delta \Phi</script> 的维度和预训练参数 <script type="math/tex">\Delta \Phi</script> 是一样的，微调所需的资源很多。</li>
+<li>研究者认为能用更少的参数表示上述要学习的参数增量 <script type="math/tex">\Delta\Phi = \Delta\Phi(\Theta)</script>，其中 <script type="math/tex">|\Theta| \ll |\Phi_0|</script>，因此原先寻找 <script type="math/tex">\Delta\Phi</script> 的优化目标变为寻找 <script type="math/tex">\Theta</script>。</li>
+<li>LoRA就是使用一个低秩矩阵来编码 <script type="math/tex">\Delta\Phi</script>:<script type="math/tex; mode=display">
+  W_0 + \Delta W = W_0 + BA, B \in \mathbb R^{d \times r}, A \in \mathbb R^{r \times k}, r \ll min(d, k)</script></li>
+</ul>
+<h3 id="参数更新过程"><a href="#参数更新过程" class="headerlink" title="参数更新过程"></a>参数更新过程</h3><ul>
+<li>本质上，LoRA 仍然使用反向传播来更新参数，但只针对新增的低秩矩阵 A 和 B，而保持原始权重 W 冻结。</li>
+<li>初始化：<ul>
+<li>W 使用预训练模型权重，并且禁止更新</li>
+<li>A 用小的随机高斯分布初始化</li>
+<li>B 初始化为全零，确保训练开始时 <script type="math/tex">\Delta W = 0</script>，避免干扰原始模型</li>
+</ul>
+</li>
+<li>前向传播：<ul>
+<li>输入数据 X，通过调整后的权重计算输出</li>
+<li>计算损失函数 L</li>
+</ul>
+</li>
+<li>反向传播：<ul>
+<li>计算损失 L 对 A 和 B 的梯度</li>
+<li>不计算 W 的梯度</li>
+</ul>
+</li>
+<li>参数更新：<ul>
+<li>使用优化器（如Adam）更新</li>
+</ul>
+</li>
+<li>迭代优化：<ul>
+<li>重复前面的操作，直到损失收敛或达到训练轮次</li>
+<li>训练完成后，A 和 B 捕捉了微调的调整信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="LoRA-在-Transformer-上的应用"><a href="#LoRA-在-Transformer-上的应用" class="headerlink" title="LoRA 在 Transformer 上的应用"></a>LoRA 在 Transformer 上的应用</h3><h4 id="注意力层"><a href="#注意力层" class="headerlink" title="注意力层"></a>注意力层</h4><ul>
+<li>对于注意力层，LoRA 最优先应用于 <script type="math/tex">W_q</script> 和 <script type="math/tex">W_v</script>：<ul>
+<li>调整 <script type="math/tex">W_q</script> 可以改变模型<strong>关注哪些信息</strong></li>
+<li>调整 <script type="math/tex">W_v</script> 可以影响模型<strong>如何编码关注的信息</strong></li>
+</ul>
+</li>
+<li>其次可以应用于 <script type="math/tex">W_o</script></li>
+<li>原论文的结论是：仅微调 <script type="math/tex">W_q</script> 和 <script type="math/tex">W_v</script> 即可达到全微调效果的 90% 以上，添加 <script type="math/tex">W_o</script> 的 LoRA 对性能提升有限（&lt;2%）。</li>
+</ul>
+<h4 id="前馈层"><a href="#前馈层" class="headerlink" title="前馈层"></a>前馈层</h4><ul>
+<li>前馈层包含两个线性变换，其中 <script type="math/tex">W_1</script> 负责升维，<script type="math/tex">W_2</script> 负责降维，二者都可以使用 LoRA 进行微调。</li>
+</ul>
+<h4 id="不推荐使用-LoRA-的层"><a href="#不推荐使用-LoRA-的层" class="headerlink" title="不推荐使用 LoRA 的层"></a>不推荐使用 LoRA 的层</h4><ul>
+<li>嵌入层（Embedding）参数量大但微调收益低</li>
+<li>LayerNorm/Bias 参数少，可以直接全微调，无需 LoRA</li>
+</ul>
+<h4 id="实际配置建议："><a href="#实际配置建议：" class="headerlink" title="实际配置建议："></a>实际配置建议：</h4><ul>
+<li>小模型（如 BERT）：<ul>
+<li>LoRA 目标层：仅 <script type="math/tex">W_q</script> 和 <script type="math/tex">W_v</script></li>
+<li>rank（r）：8 - 16</li>
+</ul>
+</li>
+<li>大模型（如 GPT-3）<ul>
+<li>LoRA 目标层：<script type="math/tex">W_q</script>、<script type="math/tex">W_v</script>、FFN 的 <script type="math/tex">W_1</script></li>
+<li>rank：32-64</li>
+</ul>
+</li>
+<li>复杂生成任务：<ul>
+<li>LoRA 目标层：所有注意力矩阵 + FFN</li>
+<li>rank：64+</li>
+</ul>
+</li>
+<li>具体应用见<a target="_blank" rel="noopener" href="https://www.51cto.com/aigc/6010.html">参考文章1</a></li>
+</ul>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/09/28/Embedding/CLIP/">← Next CLIP</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/09/28/NeuralNetwork/U-NET/">U-Net Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a><a onclick="BgmControl()"><svg id="bgm-control" viewBox="0 0 30 34" fill="#18d1ff" style="width: 24px; transition: transform .3s;margin-top: 4px"><path d="M25.998 23.422V11.29h3.999v12.132h-3.999zM19.497 6.234h4.001v22.243h-4.001V6.234zM12.998.867h4v32.978h-4V.867zm-6.5 5.367h4.001v22.243H6.498V6.234zm-6.5 5.056h4v12.132h-4V11.29z"></path></svg><audio id="bgm" src="/audio/bgm.mp3" autoplay loop crossorigin="anonymous"> </audio></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Kamikit</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">参数更新过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LoRA-%E5%9C%A8-Transformer-%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">LoRA 在 Transformer 上的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%B1%82"><span class="toc-number">4.1.</span> <span class="toc-text">注意力层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E9%A6%88%E5%B1%82"><span class="toc-number">4.2.</span> <span class="toc-text">前馈层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8-LoRA-%E7%9A%84%E5%B1%82"><span class="toc-number">4.3.</span> <span class="toc-text">不推荐使用 LoRA 的层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E9%85%8D%E7%BD%AE%E5%BB%BA%E8%AE%AE%EF%BC%9A"><span class="toc-number">4.4.</span> <span class="toc-text">实际配置建议：</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
